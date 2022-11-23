@@ -33,3 +33,8 @@
     - Create -> Derive -> select Favorites -> New / Existing Project
     - In the derived project, you must scroll to the bottom of the parameter dialog and favorite what parameters you want to use
     - Updating the "Master Parameter" project will show an update icon in the derived project (near the Save File icon)
+- [Import F3D File into Current Design](https://forums.autodesk.com/t5/fusion-360-design-validate/how-to-insert-a-f3d-file-into-an-existing-project/m-p/8870972/highlight/true#M192398)
+    - Fusion360 -> File -> Open -> save to cloud
+        - Can mark "Read-Only" to save 
+    - Open Data panel with all cloud designs
+    - right click on design you just saved -> Insert into Current Design
