@@ -10,7 +10,7 @@ I just got my printer and it works great! (Even 6 months later)
 - building and calibration: 1.5 days
     - but I could do it faster next time, this was my first time building a printer kit
 - First layer print z-offset: -1.200 mm
-- Print volume: 250 x 210 x 210 mm
+- Print volume (x,y,z): 250 x 200 x 210 mm
 - Use Octoprint in a docker container
     - I use docker because as of today, it still uses Python 2.7 for some stupid reason ... only had a decade plus to get ready for 3.0 :smile:
 
