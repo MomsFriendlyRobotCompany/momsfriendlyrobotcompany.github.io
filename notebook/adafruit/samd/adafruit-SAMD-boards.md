@@ -16,6 +16,23 @@
 
 ![](trinket-m0.png)
 
+- Digital #0 / A2  - this is connected to PA08 on the ATSAMD21. This pin can be used as a digital I/O with selectable pullup or pulldown, analog input (use 'A2'),  PWM output, and is also used for I2C data (SDA)
+- Digital #1 / A0  - this is connected to PA02 on the ATSAMD21. This pin can be used as a digital I/O with selectable pullup or pulldown, capacitive touch, analog input (use 'A0'),  and true analog (10-bit DAC) output. It cannot be used as PWM output.
+- Digital #2 / A1  - this is connected to PA09 on the ATSAMD21. This pin can be used as a digital I/O with selectable pullup or pulldown, analog input (use 'A1'),  PWM output, and is also used for I2C clock (SCL), and hardware SPI MISO
+- Digital #3 / A3  - this is connected to PA07 on the ATSAMD21. This pin can be used as a digital I/O with selectable pullup or pulldown, analog input (use 'A3'),  capacitive touch, PWM output, and is also used for **UART RX** (Serial1 in Arduino), and hardware SPI SCK
+- Digital #4 / A4  - this is connected to PA06 on the ATSAMD21. This pin can be used as a digital I/O with selectable pullup or pulldown, analog input (use 'A4'),  capacitive touch, PWM output, and is also used for **UART TX** (Serial1 in Arduino), and hardware SPI MOSI
+- Digital #7 - You can't see this pin but it is connected to the internal RGB DotStar data in pin
+- Digital #8 - You can't see this pin but it is connected to the internal RGB DotStar clock in pin
+- Digital #13 - You can't see this pin but it is connected to the little red status LED
+
+| DPin | APin | PWM | DAC | SDA | SCL | TX | RX |
+|------|------|-----|-----|-----|-----|----|----|
+| 0    | A2   | Y   |     | Y   |     |    |    |
+| 1    | A0   | N   | Y   |     |     |    |    |
+| 2    | A1   | Y   |     |     | Y   |    |    |
+| 3    | A3   | Y   |     |     |     |    | Y  |
+| 4    | A4   | Y   |     |     |     | Y  |    |
+
 ## QtPy SAMD21
 
 ![](qtpy-samd21.png)
