@@ -1,5 +1,23 @@
 # Fusion 360
 
+| Key | [Shortcut Description](https://www.autodesk.com/shortcuts/fusion-360) |
+|:---:|---|
+| C | Draw center circle |
+| D | Dimension |
+| E | Extrude |
+| F | Fillet |
+| I | Measure |
+| J | Joint |
+| Shift-J | As built joint |
+| L | Line |
+| M | Move |
+| P | Project |
+| T | Text |
+| X | Normal/construction line toggle | 
+
+
+
+
 - Preferences
     - General: :white_check_mark: Reverse zoom direction
 - 3D printing
