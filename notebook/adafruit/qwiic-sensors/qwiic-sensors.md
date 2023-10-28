@@ -126,23 +126,6 @@ where
 
 [misc1]: https://cdn-shop.adafruit.com/datasheets/ht16K33v110.pdf
 [misc2]: https://cdn-learn.adafruit.com/assets/assets/000/093/906/original/st25dv04k.pdf?1596828496
-## Terms
-
-Power Spectral Density:
-
-- Power: mean-squared value
-- Spectral: distribution of a signal over a spectrum of frequency
-- Density: mangitude of the PSD is normalized to a single Hz bandwidth
-
-$$
-RMS_{noise} = NoiseDensity \sqrt{BW * filter}
-$$
-
-where $bandwidth$ is half the Output Data Rate (ODR), $filter$ is a low pass filter having one of the following values:
-
-- 1.57(1st order)
-- 1.11 (2nd order)
-- 1.05(3rd order)
 
 ## Wiring
 
