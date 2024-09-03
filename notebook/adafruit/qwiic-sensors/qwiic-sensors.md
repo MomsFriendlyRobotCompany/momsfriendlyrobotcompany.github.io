@@ -1,36 +1,35 @@
----
-title: Adafruit Qwiic Sensors for Robotics
-date: 29 Nov 2020
----
+# Adafruit Qwiic Sensors for Robotics
 
 # Accelerometer
 
 | Sensor               | Bias (mg)  | Bits | Noise Density (2G) | RMS(mg) @ 100Hz | mg/LSB @ 2G | I2C (Hz) | Datasheet |
 |----------------------|------------|------|---------------|-----------------|------------------|-----------|-----------|
-| [NXP_FXOS8700CQ][i1] | 20         | 14   | 126           | 1.11636         | 0.244141    | 100k | [ds][id1]|
-| [LSM6DS33][i2] (Discontinued) | 40         | 16   | 90            | 0.797402        | 0.0610352   | 100k | |
-| [LSM6DSOX][i3]       | 20         | 16   | 70            | 0.620202        | 0.0610352   | 1M   | [ds][id2] |
+| [NXP_FXOS8700CQ][i1] | 20         | 14   | 126           | 1.11636         | 0.244141    | 100k | |
+| [LSM6DS33][i2] (Discontinued) |40 | 16   | 90            | 0.797402        | 0.0610352   | 100k | |
+| [LSM6DSOX][i3]       | 20         | 16   | 70            | 0.620202        | 0.0610352   | 1M   | [datasheet][id2] |
 | [LSM6DS3TR][i8]      | 40         | 16   | 90            | 1.7             | 0.061       | 400k | |
-| [ISM330DHCX][i4]     | 10         | 16   | 60            | 1.8             | 0.0610352   | 1M   | [ds][id4] |
+| [ISM330DHCX][i4]     | 10         | 16   | 60            | 1.8             | 0.0610352   | 1M   | [datasheet][id4] |
 | [LSM9DS1][i5]        | 90         | 16   | 200           | 1.772           | 0.0610352   |      | |
 | [ICM-20649][i6]      | Unkn       | 16   | 285           | 2.52511         | 0.0610352   |      | |
 | [ICM-20948][i10]     |            | 16   | 230 (10Hz)    |                 |             | 400k | |
-| [BNO055][i7]         | 80         | 14   | 150           | 1.329           | 0.244141    |      | |
+| [BNO055][i7]         | 80         | 14   | 150           | 1.329           | 0.244141    |      | [datasheet][id5] |
+| [BNO085][o2]         |            |      |               |                 |             | 400k | [datasheet][id6] |
 | [MPU6050][i9]        | 50/80      | 16   | 400           |                 | 16.384      | 400k | |
 
 - Bias: Linear acceleration zero-g level offset accuracy
 - Noise Density: $\mu g / \sqrt{Hz}$
 
-[id1]: h
 [id2]: https://www.st.com/resource/en/datasheet/lsm6dsox.pdf
 [id4]: https://www.st.com/resource/en/datasheet/ism330dhcx.pdf
+[id5]: https://cdn-learn.adafruit.com/assets/assets/000/125/776/original/bst-bno055-ds000.pdf?1698865246
+[id6]: https://www.ceva-dsp.com/wp-content/uploads/2019/10/BNO080_085-Datasheet.pdf
 
 # Orientation
 
 | Sensor               | I2C  | Notes |
 |----------------------|------|---|
-| [BNO055][o1]         | 0x28 |   |
-| [BNO085][o2]         | 0x4A | Vendor sold to new company |
+| [BNO055][o1]         | `0x28` |   |
+| [BNO085][o2]         | `0x4A`,`0x4B` | Vendor sold to new company |
 
 [o1]: https://www.adafruit.com/product/4646
 [o2]: https://www.adafruit.com/product/4754
@@ -43,7 +42,7 @@ and not standard aerospace definitions of the frame (x-forward, y-right wing, z-
 | Sensor               | Bits  | Noise Density | Drift | RMS(mdps) @ 100Hz | mdps/LSB @ 1000dps | Zero |
 |----------------------|-------|---------------|-------|-------------------|--------------------|------|
 | [NXP_FXAS21002C][i1] | 16    | 25            | 0.02  | 223.607           | 30.5176            | 0.52 |
-| [LSM6DS33][i2] (Discontinued) | 16    | 7             | 0.05  | 62.6099           | 30.5176            | 1.3  |
+| [LSM6DS33][i2] (Discontinued)| 16 | 7        | 0.05  | 62.6099           | 30.5176            | 1.3  |
 | [LSM6DSOX][i3]       | 16    | 3.8           | 0.01  | 33.9882           | 30.5176            | 0.26 |
 | [LSM6DS3TR][i8]      |       | 5             | 0.05  | 75                | 30                 | 0.05 |
 | [ISM330DHCX][i4]     | 16    | 5             | 0.005 | 44.7214           | 30.5176            | 0.13 |
@@ -69,25 +68,31 @@ and not standard aerospace definitions of the frame (x-forward, y-right wing, z-
 
 Earth's magnetic field ranges between 0.25 and 0.65 gauss (25 - 65 $\mu$T)
 
-| Sensor | Bits | Scale( $\pm$ gauss) | RMS(mgauss) | I2C(Hz) | Addr |
-|--------|------|-------------------|-------------|---------|------|
-|[LIS3MDL][mag1]   | 16 | 4,8,12,16 | 3.2 (@ 12 gauss) | 400k |`0x1C`,`0x1E`|
-|[LIS2MDL][mag2]   | 16 | 50        | 3 (w/LPF)        | 3.4M |`0x1E`|
-|[MMC5603NJ][mag3] | 20 | 30        | 2 (@ 150Hz)      | 400k |`0x30`|
-
+| Sensor | Bits | Scale( $\pm$ gauss) | RMS(mgauss) | I2C(Hz) | Addr | Datasheet |
+|--------|------|-------------------|-------------|---------|------|---|
+|[LIS3MDL][mag1]   | 16 | 4,8,12,16 | 3.2 (@ 12 gauss) | 400k |`0x1C`,`0x1E`| [datasheet][ds1] |
+|[LIS2MDL][mag2]   | 16 | 50        | 3 (w/LPF)        | 3.4M |`0x1E`| [datasheet][ds2] |
+|[MMC5603NJ][mag3] | 20 | 30        | 2 (@ 150Hz)      | 400k |`0x30`| [datasheet][ds3] |
 
 [mag1]: https://www.adafruit.com/product/4479
 [mag2]: https://www.adafruit.com/product/4488
 [mag3]: https://www.adafruit.com/product/5579
+[ds1]: https://www.st.com/resource/en/datasheet/lis3mdl.pdf
+[ds2]: https://www.st.com/resource/en/datasheet/lis2mdl.pdf
+[ds3]: https://cdn-learn.adafruit.com/assets/assets/000/113/957/original/MMC5603NJ_RevB_7-12-18.pdf?1659554945
 
 # Pressure
 
-| Sensor       | bits | Sampling (Hz) | Abs Accuracy (Pa) | Rel Accuracy (Pa) | Range (hPa) | I2C (Hz) |
-|--------------|------|---------------|-------------------|-------------------|-------------|-----------|
-| [LPS22][p1]  | 24   | 75            | 100               | Unknown           | 260-1260    | 400k |
-| [DPS310][p2] | 24   | 128           | 100               | 6 (0.55m)         | 300-1200    | 3.4M |
-| [BMP388][p4] | 24   | 200           | 50                | 8 (0.66m)         | 300-1100    | 3.4M |
-| [BMP390][p3] | 24   | 200           | 50                | 3 (0.25m)         | 300-1250    | 3.4M |
+| Sensor       | bits | Sampling (Hz) | Abs Accuracy (Pa) | Rel Accuracy (Pa) | Range (hPa) | I2C (Hz) | Addr | Datasheet |
+|--------------|------|---------------|-------------------|-------------------|-------------|----------|------|-----------|
+| [LPS22][p1]  | 24   | 75            | 100               | Unknown           | 260-1260    | 400k     |      | [datasheet][gds3] |
+| [DPS310][p2] | 24   | 128           | 100               | 6 (0.55m)         | 300-1200    | 3.4M     |`0x76`,`0x77`| [datasheet][gds1] |
+| [BMP388][p4] | 24   | 200           | 50                | 8 (0.66m)         | 300-1100    | 3.4M     |      | |
+| [BMP390][p3] | 24   | 200           | 50                | 3 (0.25m)         | 300-1250    | 3.4M     |`0x76`,`0x77`| [datasheet][gds2] |
+
+[gds1]: https://www.infineon.com/dgdl/Infineon-DPS310-DataSheet-v01_01-EN.pdf?fileId=5546d462576f34750157750826c42242
+[gds2]: https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmp390-ds002.pdf
+[gds3]: https://www.st.com/resource/en/datasheet/dm00140895.pdf
 
 [Altitude][peqn] can be calculated with:
 
