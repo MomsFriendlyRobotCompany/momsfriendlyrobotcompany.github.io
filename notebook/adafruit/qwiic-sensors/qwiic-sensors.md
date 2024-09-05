@@ -122,6 +122,14 @@ where
 [p3]: https://www.adafruit.com/product/4816
 [p4]: https://www.adafruit.com/product/3966
 
+## GPS
+
+| Sensor  | Addr   | Rate             | Datasheet |
+|---------|--------|------------------|-----------|
+| PA1010D | `0x10` | 400 (unverified) | [datasheet][gps1]
+
+[gps1]: https://cdn-learn.adafruit.com/assets/assets/000/084/295/original/CD_PA1010D_Datasheet_v.03.pdf?1573833002
+
 ## Miscellanious I2C (QWIIC) Parts
 
 | Device | Part | I2C |
