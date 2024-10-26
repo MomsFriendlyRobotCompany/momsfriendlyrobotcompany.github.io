@@ -5,7 +5,7 @@
 | Sensor               | Bias (mg)  | Bits | Noise Density (2G) | RMS(mg) @ 100Hz | Hz  | Datasheet |
 |----------------------|------------|------|--------------------|-----------------|-----|-----------|
 | [NXP_FXOS8700CQ][i1] | 20         | 14   | 126                | 1.11636         | 100k | |
-| [LSM6DS33][i2]       | 40         | 16   | 90                 | 0.797402        | 100k | Discontinued |
+| [LSM6DS33][i2]       | 40         | 16   | 90                 | 0.797402        | 100k | Discontinued [id8] |
 | [LSM6DSOX][i3]       | 20         | 16   | 70                 | 0.620202        | 1M   | [datasheet][id2] |
 | [LSM6DS3TR][i8]      | 40         | 16   | 90                 | 1.7             | 400k | |
 | [ISM330DHCX][i4]     | 10         | 16   | 60                 | 1.8             | 1M   | [datasheet][id4] |
@@ -25,6 +25,7 @@
 [id5]: https://cdn-learn.adafruit.com/assets/assets/000/125/776/original/bst-bno055-ds000.pdf?1698865246
 [id6]: https://www.ceva-dsp.com/wp-content/uploads/2019/10/BNO080_085-Datasheet.pdf
 [id7]: https://invensense.tdk.com/wp-content/uploads/2020/04/ds-000347_icm-42688-p-datasheet.pdf
+[id8]: https://www.st.com/resource/en/datasheet/lsm6ds33.pdf
 
 # Orientation
 
@@ -145,32 +146,13 @@ where
 
 ## Wiring
 
+![](./qwiic-pinout.jpg)
+
 - Red: 3.3VDC Power
 - Black: Ground
 - Blue: I2C SDA Data
 - Yellow: I2C SCL Clock
 
-# Datasheets
-
-- Accels/Magnetometer
-    - NXP: [FXOS8700CQ](FXOS8700CQ.pdf)
-- Gyros:
-    - NXP: [FXAS21002](FXAS21002.pdf)
-- Accels/Gyros
-    - ST [LSM6DSOX](lsm6dsox.pdf)
-    - ST [LSM6DS33](lsm6ds33.pdf) (Discontinued)
-    - ST [LSM9DS1](lsm9ds1.pdf)
-        - [LSM9DS1 tech notes](TA0343-LSM9DS1-IMU.pdf)
-    - ST [ISM330DHCX](ism330dhcx.pdf)
-    - InvenSense [ICM-20649](icm-20649.pdf)
-- Magnetometer
-    - ST [LIS3MDL](lis3mdl.pdf)
-    - ST [LIS2MDL](https://www.st.com/resource/en/datasheet/lis2mdl.pdf)
-    - MEMSIC [MMC5603NJ](https://cdn-learn.adafruit.com/assets/assets/000/113/957/original/MMC5603NJ_RevB_7-12-18.pdf?1659554945)
-- Pressure
-    - ST [LPS22](https://www.st.com/resource/en/datasheet/dm00140895.pdf)
-    - Bosch [BMP390](https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmp390-ds002.pdf)
-    - Infineon [DPS310](https://www.infineon.com/dgdl/Infineon-DPS310-DataSheet-v01_01-EN.pdf?fileId=5546d462576f34750157750826c42242)
 
 
 
