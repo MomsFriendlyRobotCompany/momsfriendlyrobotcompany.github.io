@@ -72,7 +72,7 @@ and not standard aerospace definitions of the frame (x-forward, y-right wing, z-
 
 Earth's magnetic field ranges between 0.25 and 0.65 gauss (25 - 65 $\mu$T)
 
-| Sensor          | Bits | Scale ($\pm$ gauss) | RMS(mgauss)      | ODR (Hz)         | LSB/C | Bias ($\pm$mG) |SPI(MHz)| I2C(Hz) | Addr        |
+| Sensor          | Bits | Scale ($\pm$ gauss) | RMS(mgauss)      | ODR (Hz)         | LSB/C | Bias ($\pm$ mG) |SPI(MHz)| I2C(Hz) | Addr        |
 |-----------------|------|---------------------|------------------|------------------|-------|----------------|--------|--------|-------------|
 |[LIS3MDL][ds1]   | 16   | 4,8,12,16           | 3.2 (@ 12 gauss) | 155,300,560,1000 | 8     | 1 (@ 4 gauss)  | 10     | 400k    |`0x1C`,`0x1E`
 |[LIS2MDL][ds2]   | 16   | 50                  | 3 (w/LPF)        |                  |       |                |        | 3.4M    |`0x1E`
