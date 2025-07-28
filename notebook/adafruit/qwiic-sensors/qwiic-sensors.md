@@ -42,8 +42,8 @@ and not standard aerospace definitions of the frame (x-forward, y-right wing, z-
 
 # Gryoscope
 
-| Sensor               | Bits  | Noise Density | Drift | RMS(mdps) @ 100Hz | Zero |
-|----------------------|-------|---------------|-------|-------------------|------|
+| Sensor               | Bits  | Noise Density | Drift | RMS(mdps) @ 100Hz | Zero | ODR |
+|----------------------|-------|---------------|-------|-------------------|------|-----|
 | [NXP_FXAS21002C][i1] | 16    | 25            | 0.02  | 223.607           | 0.52 |
 | [LSM6DS33][i2]       | 16    | 7             | 0.05  | 62.6099           | 1.3  |
 | [LSM6DSOX][i3]       | 16    | 3.8           | 0.01  | 33.9882           | 0.26 |
@@ -72,27 +72,29 @@ and not standard aerospace definitions of the frame (x-forward, y-right wing, z-
 
 Earth's magnetic field ranges between 0.25 and 0.65 gauss (25 - 65 $\mu$T)
 
-| Sensor | Bits | Scale( $\pm$ gauss) | RMS(mgauss)      | I2C(Hz) | Addr | Datasheet |
-|--------|------|---------------------|------------------|---------|------|-----------|
-|[LIS3MDL][mag1]   | 16 | 4,8,12,16   | 3.2 (@ 12 gauss) | 400k    |`0x1C`,`0x1E`| [datasheet][ds1] |
-|[LIS2MDL][mag2]   | 16 | 50          | 3 (w/LPF)        | 3.4M    |`0x1E`| [datasheet][ds2] |
-|[MMC5603NJ][mag3] | 20 | 30          | 2 (@ 150Hz)      | 400k    |`0x30`| [datasheet][ds3] |
+| Sensor          | Bits | Scale ($\pm$ gauss) | RMS(mgauss)      | ODR (Hz)         | LSB/C | Bias ($\pm$mG) |SPI(MHz)| I2C(Hz) | Addr        |
+|-----------------|------|---------------------|------------------|------------------|-------|----------------|--------|--------|-------------|
+|[LIS3MDL][ds1]   | 16   | 4,8,12,16           | 3.2 (@ 12 gauss) | 155,300,560,1000 | 8     | 1 (@ 4 gauss)  | 10     | 400k    |`0x1C`,`0x1E`
+|[LIS2MDL][ds2]   | 16   | 50                  | 3 (w/LPF)        |                  |       |                |        | 3.4M    |`0x1E`
+|[MMC5603NJ][ds3] | 20   | 30                  | 2 (@ 150Hz)      |                  |       |                |        | 400k    |`0x30`
+|[QMC5883L][ds4]  | 16   | 2,8                 | unknown          | 10, 50, 100, 200 | 100   | 10             | N/A    | 400k    |`0x1D`
 
-[mag1]: https://www.adafruit.com/product/4479
-[mag2]: https://www.adafruit.com/product/4488
-[mag3]: https://www.adafruit.com/product/5579
+- Temperature drift centered at 25C
+- LIS3MDL can have slower ODR (0.625-80Hz) when `FAST_ODR` is set low in `CTRL_REG1`
+
 [ds1]: https://www.st.com/resource/en/datasheet/lis3mdl.pdf
 [ds2]: https://www.st.com/resource/en/datasheet/lis2mdl.pdf
 [ds3]: https://cdn-learn.adafruit.com/assets/assets/000/113/957/original/MMC5603NJ_RevB_7-12-18.pdf?1659554945
+[ds4]: https://www.qstcorp.com/en_comp_prod/QMC5883L
 
 # Pressure
 
-| Sensor       | bits | Sampling (Hz) | Abs Accuracy (Pa) | Rel Accuracy (Pa) | Range (hPa) | I2C (Hz) | Addr | Datasheet |
-|--------------|------|---------------|-------------------|-------------------|-------------|----------|------|-----------|
-| [LPS22][p1]  | 24   | 75            | 100               | Unknown           | 260-1260    | 400k     |      | [datasheet][gds3] |
-| [DPS310][p2] | 24   | 128           | 100               | 6 (0.55m)         | 300-1200    | 3.4M     |`0x76`,`0x77`| [datasheet][gds1] |
-| [BMP388][p4] | 24   | 200           | 50                | 8 (0.66m)         | 300-1100    | 3.4M     |      | |
-| [BMP390][p3] | 24   | 200           | 50                | 3 (0.25m)         | 300-1250    | 3.4M     |`0x76`,`0x77`| [datasheet][gds2] |
+| Sensor         | bits | ODR (Hz)      | Abs Accuracy (Pa) | Rel Accuracy (Pa) | Range (hPa) |SPI(MHz)| I2C (Hz) | Addr      |
+|----------------|------|---------------|-------------------|-------------------|-------------|--------|----------|-----------|
+| [LPS22][gds3]  | 24   | 1,10,25,50,75 | 100               | Unknown           | 260-1260    | 10     | 400k     |`0x5C`,`0x5D`      
+| [DPS310][gds1] | 24   | 128           | 100               | 6 (0.55m)         | 300-1200    |        | 3.4M     |`0x76`,`0x77`
+| BMP388         | 24   | 200           | 50                | 8 (0.66m)         | 300-1100    |        | 3.4M     |     
+| [BMP390][gds2] | 24   | 25,50,100,200 | 50                | 3 (0.25m)         | 300-1250    |        | 3.4M     |`0x76`,`0x77`
 
 [gds1]: https://www.infineon.com/dgdl/Infineon-DPS310-DataSheet-v01_01-EN.pdf?fileId=5546d462576f34750157750826c42242
 [gds2]: https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmp390-ds002.pdf
