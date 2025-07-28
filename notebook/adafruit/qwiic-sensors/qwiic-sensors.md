@@ -2,20 +2,20 @@
 
 # Accelerometer
 
-| Sensor               | Bias (mg)  | Bits | Noise Density (2G) | RMS(mg) @ 100Hz | Hz  | Datasheet |
-|----------------------|------------|------|--------------------|-----------------|-----|-----------|
-| [NXP_FXOS8700CQ][i1] | 20         | 14   | 126                | 1.11636         | 100k | |
-| [LSM6DS33][i2]       | 40         | 16   | 90                 | 0.797402        | 100k | Discontinued [id8] |
-| [LSM6DSOX][i3]       | 20         | 16   | 70                 | 0.620202        | 1M   | [datasheet][id2] |
-| [LSM6DS3TR][i8]      | 40         | 16   | 90                 | 1.7             | 400k | |
-| [ISM330DHCX][i4]     | 10         | 16   | 60                 | 1.8             | 1M   | [datasheet][id4] |
-| [LSM9DS1][i5]        | 90         | 16   | 200                | 1.772           |      | |
-| [ICM-20649][i6]      | Unkn       | 16   | 285                | 2.52511         |      | |
-| [ICM-20948][i10]     |            | 16   | 230 (10Hz)         |                 | 400k | |
-| ICM-42688-P          | 20         | 16   | 70                 | 0.70            | 1M   | [datasheet][id7] |
-| [BNO055][i7]         | 80         | 14   | 150                | 1.329           |      | [datasheet][id5] |
-| [BNO085][o2]         |            |      |                    |                 | 400k | [datasheet][id6] |
-| [MPU6050][i9]        | 50/80      | 16   | 400                |                 | 400k | |
+| Sensor               | Bias (mg)  | Bits | Noise Density (2G) | RMS(mg) @ 100Hz |I2C(Hz)|
+|----------------------|------------|------|--------------------|-----------------|-------|
+| NXP_FXOS8700CQ       | 20         | 14   | 126                | 1.11636         | 100k  |
+| [LSM6DS33][id8]      | 40         | 16   | 90                 | 0.797402        | 100k  |
+| [LSM6DSOX][id2]      | 20         | 16   | 70                 | 0.620202        | 1M    |
+| LSM6DS3TR            | 40         | 16   | 90                 | 1.7             | 400k  |
+| [ISM330DHCX][id4]    | 10         | 16   | 60                 | 1.8             | 1M    |
+| LSM9DS1              | 90         | 16   | 200                | 1.772           |       |
+| ICM-20649            | Unkn       | 16   | 285                | 2.52511         |       |
+| ICM-20948            |            | 16   | 230 (10Hz)         |                 | 400k  |
+| [ICM-42688-P][id7]   | 20         | 16   | 70                 | 0.70            | 1M    |
+| [BNO055][id5]        | 80         | 14   | 150                | 1.329           |       |
+| [BNO085][id6]        |            |      |                    |                 | 400k  |
+| MPU6050              | 50/80      | 16   | 400                |                 | 400k  |
 
 - Bias: Linear acceleration zero-g level offset accuracy
 - Noise Density: $\mu g / \sqrt{Hz}$
@@ -94,7 +94,7 @@ Earth's magnetic field ranges between 0.25 and 0.65 gauss (25 - 65 $\mu$T)
 | [LPS22][gds3]  | 24   | 1,10,25,50,75 | 100               | Unknown           | 260-1260    | 10     | 400k     |`0x5C`,`0x5D`      
 | [DPS310][gds1] | 24   | 128           | 100               | 6 (0.55m)         | 300-1200    |        | 3.4M     |`0x76`,`0x77`
 | BMP388         | 24   | 200           | 50                | 8 (0.66m)         | 300-1100    |        | 3.4M     |     
-| [BMP390][gds2] | 24   | 25,50,100,200 | 50                | 3 (0.25m)         | 300-1250    |        | 3.4M     |`0x76`,`0x77`
+| [BMP390][gds2] | 24   | 25,50,100,200 | 50                | 3 (0.25m)         | 300-1250    | 10     | 3.4M     |`0x76`,`0x77`
 
 [gds1]: https://www.infineon.com/dgdl/Infineon-DPS310-DataSheet-v01_01-EN.pdf?fileId=5546d462576f34750157750826c42242
 [gds2]: https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmp390-ds002.pdf
