@@ -9,7 +9,7 @@
 | [LSM6DSOX][id2]      | 20         | 16   | 70                 | 0.620202        | 1M    |
 | LSM6DS3TR            | 40         | 16   | 90                 | 1.7             | 400k  |
 | [ISM330DHCX][id4]    | 10         | 16   | 60                 | 1.8             | 1M    |
-| LSM9DS1              | 90         | 16   | 200                | 1.772           |       |
+| LSM9DS1              | 90         | 16   | 200                | 1.772           | OLD   |
 | ICM-20649            | Unkn       | 16   | 285                | 2.52511         |       |
 | ICM-20948            |            | 16   | 230 (10Hz)         |                 | 400k  |
 | [ICM-42688-P][id7]   | 20         | 16   | 70                 | 0.70            | 1M    |
@@ -46,7 +46,7 @@ and not standard aerospace definitions of the frame (x-forward, y-right wing, z-
 |----------------------|-------|---------------|-------|-------------------|------|-----|
 | [NXP_FXAS21002C][i1] | 16    | 25            | 0.02  | 223.607           | 0.52 |
 | [LSM6DS33][i2]       | 16    | 7             | 0.05  | 62.6099           | 1.3  |
-| [LSM6DSOX][i3]       | 16    | 3.8           | 0.01  | 33.9882           | 0.26 |
+| [LSM6DSO(X)][i3]     | 16    | 3.8           | 0.01  | 33.9882           | 0.26 |
 | [LSM6DS3TR][i8]      |       | 5             | 0.05  | 75                | 0.05 |
 | [ISM330DHCX][i4]     | 16    | 5             | 0.005 | 44.7214           | 0.13 |
 | [MPU6050][i9]        | 16    | 0.005 (10Hz)  | 20    | 50                |      |
@@ -74,18 +74,24 @@ Earth's magnetic field ranges between 0.25 and 0.65 gauss (25 - 65 $\mu$T)
 
 | Sensor          | Bits | Scale ($\pm$ gauss) | RMS(mgauss)      | ODR (Hz)         | LSB/C | Bias ($\pm$ mG) |SPI(MHz)| I2C(Hz) | Addr        |
 |-----------------|------|---------------------|------------------|------------------|-------|----------------|--------|--------|-------------|
-|[LIS3MDL][ds1]   | 16   | 4,8,12,16           | 3.2 (@ 12 gauss) | 155,300,560,1000 | 8     | 1 (@ 4 gauss)  | 10     | 400k    |`0x1C`,`0x1E`
-|[LIS2MDL][ds2]   | 16   | 50                  | 3 (w/LPF)        |                  |       |                |        | 3.4M    |`0x1E`
-|[MMC5603NJ][ds3] | 20   | 30                  | 2 (@ 150Hz)      |                  |       |                |        | 400k    |`0x30`
-|[QMC5883L][ds4]  | 16   | 2,8                 | unknown          | 10, 50, 100, 200 | 100   | 10             | N/A    | 400k    |`0x1D`
+|[LIS3MDL][ds1]   | 16   | 4,8,12,16           | 3.2 (@ 12 gauss) | 155,300,560,1000 | 8     | 1 (@ 4 gauss)  | 10     | 400k   |`0x1C`,`0x1E`
+|[LIS2MDL][ds2]   | 16   | 50                  | 4.5 (Hi Res)     | 10,20,50,100     |0.3mg/C| 60             | 10     | 3400k  |`0x1E`
+|[MMC5603NJ][ds3] | 20   | 30                  | 2 (@ 150Hz)      |                  | Unk   |                | N/A    | 400k   |`0x30`
+|[QMC5883L][ds4]  | 16   | 2,8                 | unknown          | 10, 50, 100, 200 | 100   | 10             | N/A    | 400k   |`0x1D`
+|[LSM303DLHC][ds5]| 16   | 1.3-8.1             | unknown          | 15,30,75,220     | Unk   | 20             | N/A    | 400    | `0x19`
+|[LSM303AGR][ds6] | 16   | 50                  | 3                | 10,20,50,100     | 3     |                | 10     | 3400k  | `0x19`
+|[MLX90393][ds7]  | 19   | 50-500              |~50 (1.61 mgauss/LSB)| 1-700 (complex)  | 45.2  | 0?             | 10     | 3400k  | many
 
 - Temperature drift centered at 25C
 - LIS3MDL can have slower ODR (0.625-80Hz) when `FAST_ODR` is set low in `CTRL_REG1`
 
 [ds1]: https://www.st.com/resource/en/datasheet/lis3mdl.pdf
 [ds2]: https://www.st.com/resource/en/datasheet/lis2mdl.pdf
-[ds3]: https://cdn-learn.adafruit.com/assets/assets/000/113/957/original/MMC5603NJ_RevB_7-12-18.pdf?1659554945
+[ds3]: https://cdn-learn.adafruit.com/assets/assets/000/113/957/original/MMC5603NJ_RevB_7-12-18.pdf
 [ds4]: https://www.qstcorp.com/en_comp_prod/QMC5883L
+[ds5]: https://www.st.com/resource/en/datasheet/lsm303dlhc.pdf
+[ds6]: https://www.st.com/resource/en/datasheet/lsm303agr.pdf
+[ds7]: https://www.melexis.com/en/documents/documentation/datasheets/datasheet-mlx90393
 
 # Pressure
 
