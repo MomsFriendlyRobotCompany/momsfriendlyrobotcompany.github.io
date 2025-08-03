@@ -136,16 +136,18 @@ where
 
 ## GPS
 
-| Sensor  | Addr   | Rate             | Datasheet |
-|---------|--------|------------------|-----------|
-| PA1010D | `0x10` | 400 (unverified) | [datasheet][gps1]
+| Sensor                 | Addr   | Rate                |
+|------------------------|--------|---------------------|
+| [PA1010D][gps1]        | `0x10` | 400kHz (unverified) 
+| [Ultimate GPSv3][gps2] | N/A    | 9600bps              
 
 [gps1]: https://cdn-learn.adafruit.com/assets/assets/000/084/295/original/CD_PA1010D_Datasheet_v.03.pdf?1573833002
+[gps2]: https://learn.adafruit.com/adafruit-ultimate-gps
 
 ## Miscellanious I2C (QWIIC) Parts
 
-| Device | Part | I2C |
-|--------|------|-----|
+| Device       | Part               | I2C  |
+|--------------|--------------------|------|
 | LED backpack | [HT16K33][misc1]   | 400k |
 | NFC/RFID     | [ST25DV16K][misc2] | 1M   |
 
