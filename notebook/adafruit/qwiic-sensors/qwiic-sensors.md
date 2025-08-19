@@ -2,24 +2,26 @@
 
 # Accelerometer
 
-| Sensor               | Bias (mg)  | Bits | Noise Density (2G) | RMS(mg) @ 100Hz |I2C(Hz)|
-|----------------------|------------|------|--------------------|-----------------|-------|
-| NXP_FXOS8700CQ       | 20         | 14   | 126                | 1.11636         | 100k  |
-| [LSM6DS33][id8]      | 40         | 16   | 90                 | 0.797402        | 100k  |
-| [LSM6DSOX][id2]      | 20         | 16   | 70                 | 0.620202        | 1M    |
-| LSM6DS3TR            | 40         | 16   | 90                 | 1.7             | 400k  |
-| [ISM330DHCX][id4]    | 10         | 16   | 60                 | 1.8             | 1M    |
-|LSM9DS1 (discontinued)| 90         | 16   | 200                | 1.772           | 100k  |
-| ICM-20649            | Unkn       | 16   | 285                | 2.52511         |       |
-| ICM-20948            |            | 16   | 230 (10Hz)         |                 | 400k  |
-| [ICM-42688-P][id7]   | 20         | 16   | 70                 | 0.70            | 1M    |
-| [BNO055][id5]        | 80         | 14   | 150                | 1.329           |       |
-| [BNO085][id6]        |            |      |                    |                 | 400k  |
-| MPU6050              | 50/80      | 16   | 400                |                 | 400k  |
+| Sensor               | Bias (mg)  | Bits | Noise Density (2G) | RMS(mg) @ 100Hz |I2C(Hz)| mg/C | Max ODR|
+|----------------------|------------|------|--------------------|-----------------|-------|------|--------|
+| NXP_FXOS8700CQ       | 20         | 14   | 126                | 1.11636         | 100k  |      |
+| [LSM6DS33][id8]      | 40         | 16   | 90                 | 0.797402        | 100k  |      |
+| [LSM6DSOX][id2]      | 20         | 16   | 70                 | 0.620202        | 1M    |      |
+| [LSM6DSL][id1]       | 40         | 16   | 80                 | 1.8             | 1M    | 0.1  | 6664
+| LSM6DS3TR            | 40         | 16   | 90                 | 1.7             | 400k  |      |
+| [ISM330DHCX][id4]    | 10         | 16   | 60                 | 1.8             | 1M    |      |
+|LSM9DS1 (discontinued)| 90         | 16   | 200                | 1.772           | 100k  |      |
+| ICM-20649            | Unkn       | 16   | 285                | 2.52511         |       |      |
+| ICM-20948            |            | 16   | 230 (10Hz)         |                 | 400k  |      |
+| [ICM-42688-P][id7]   | 20         | 16   | 70                 | 0.70            | 1M    |      | 32000
+| [BNO055][id5]        | 80         | 14   | 150                | 1.329           | 400k  |      |
+| [BNO085][id6]        |            |      |                    |                 | 400k  |      |
+| MPU6050              | 50/80      | 16   | 400                |                 | 400k  |      |
 
 - Bias: Linear acceleration zero-g level offset accuracy
 - Noise Density: $\mu g / \sqrt{Hz}$
 
+[id1]: https://www.st.com/resource/en/datasheet/lsm6dsl.pdf
 [id2]: https://www.st.com/resource/en/datasheet/lsm6dsox.pdf
 [id4]: https://www.st.com/resource/en/datasheet/ism330dhcx.pdf
 [id5]: https://cdn-learn.adafruit.com/assets/assets/000/125/776/original/bst-bno055-ds000.pdf?1698865246
@@ -29,9 +31,9 @@
 
 # Orientation
 
-| Sensor               | I2C  | Notes |
-|----------------------|------|---|
-| [BNO055][o1]         | `0x28` |   |
+| Sensor               | I2C           | Notes                      |
+|----------------------|---------------|----------------------------|
+| [BNO055][o1]         | `0x28`,`0x29` |                            |
 | [BNO085][o2]         | `0x4A`,`0x4B` | Vendor sold to new company |
 
 [o1]: https://www.adafruit.com/product/4646
@@ -42,16 +44,17 @@ and not standard aerospace definitions of the frame (x-forward, y-right wing, z-
 
 # Gryoscope
 
-| Sensor               | Bits  | Noise Density | Drift | RMS(mdps) @ 100Hz | Zero | ODR |
-|----------------------|-------|---------------|-------|-------------------|------|-----|
+| Sensor               | Bits  | Noise Density | Drift | RMS(mdps) @ 100Hz | Zero | ODR [hz] |
+|----------------------|-------|---------------|-------|-------------------|------|----------|
 | [NXP_FXAS21002C][i1] | 16    | 25            | 0.02  | 223.607           | 0.52 |
 | [LSM6DS33][i2]       | 16    | 7             | 0.05  | 62.6099           | 1.3  |
 | [LSM6DSO(X)][i3]     | 16    | 3.8           | 0.01  | 33.9882           | 0.26 |
+| LSM6DSL              | 16    | 4             | 0.015 | 75                |3 dps | 6664
 | [LSM6DS3TR][i8]      |       | 5             | 0.05  | 75                | 0.05 |
 | [ISM330DHCX][i4]     | 16    | 5             | 0.005 | 44.7214           | 0.13 |
 | [MPU6050][i9]        | 16    | 0.005 (10Hz)  | 20    | 50                |      |
 | [ICM-20948][i10]     | 16    | 15            | 0.05  |                   | 5    |
-| ICM-42688-P          | 16    | 2.8           | 0.05  | 28                | 0.5  |
+| ICM-42688-P          | 16    | 2.8           | 0.1   | 28                | 0.5  | 32k
 
 - Drift: Angular rate typical zero-rate level change vs. temperature (dps/C)
 - Zero: Initial Zero Tolerance @ 25C
